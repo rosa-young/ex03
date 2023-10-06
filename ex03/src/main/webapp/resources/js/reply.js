@@ -50,7 +50,7 @@ var replyService = (function(){
 		} );
  };		
 	//댓글삭제
-	function deleteRno(rno,callback,error){
+	function del(rno,callback,error){
 		console.log("댓글삭제");
 		$.ajax({
 			type:"delete",
@@ -108,9 +108,56 @@ var replyService = (function(){
 		})
 	};
 	
+	//시간포맷 처리 함수
+	function displayTime(timeValue){
+		var dateObj = new Date(timeValue);
+		var year = dateObj.getFullYear();
+		var month = dateObj.getMonth()+1; 
+		var date = dateObj.getDate();
+		var day = dateObj.getDay();
+		var hh = dateObj.getHours();
+		var mi = dateObj.getMinutes();
+		var ss = dateObj.getSeconds();
+		var ms = dateObj.getMilliseconds();
+
+		return hh+":"+ss;
+		
+	
+	}
+
+	//경과시간 표시
+	function elapsedTime(date){
+		var seconds =1;
+		var minute = seconds*60;
+		var hour = minute*60;
+		var day = hour*24;		
+
+		var today = new Date();
+		var elapsedTime = Math.trunc( (today.getTime()-date.getTime() ) /1000);
+
+		var elapsedText = "";
+		if (elapsedTime < day) {
+			elapsedText = Math.trunc(elapsedTime / hour) + "시간 전";
+		}
+		return elapsedText;
+	}
+
+
 	
 		
 	//      이름 : 값(add함수)
-	return {add:add, getList:getList, deleteRno:deleteRno, modify:modify, get:get };
+	return {add:add, getList:getList, del:del, modify:modify, get:get, time:displayTime 
+	,elapsedTime:elapsedTime};
 })();
+
+
+
+
+
+
+
+
+
+
+
 
