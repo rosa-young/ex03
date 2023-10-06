@@ -133,7 +133,8 @@ var replyService = (function(){
 		var day = hour*24;		
 
 		var today = new Date();
-		var elapsedTime = Math.trunc( (today.getTime()-date.getTime() ) /1000);
+		var dateObj = new Date(date);
+		var elapsedTime = Math.trunc( (today.getTime()-dateObj.getTime() ) /1000);
 
 		var elapsedText = "";
 		if (elapsedTime < day) {

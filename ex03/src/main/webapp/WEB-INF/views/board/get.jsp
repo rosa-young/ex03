@@ -106,7 +106,8 @@ function replyList(){
  			replyStr += "<li><span hidden>" +reply[i].rno +"</span>" 
  						+'<span class="replyModify">'+reply[i].reply+"</span> (<b>"+reply[i].replyer+"</b>)"
  						+'<strong class="pull-right text-muted">'
- 						+replyService.time(reply[i].replyDate) 						
+ 						+replyService.time(reply[i].replyDate) 
+ 						+" ("+replyService.elapsedTime(reply[i].replyDate)+")"
  						+' <span class="btnDel"><a href="#"><i class="fa fa-trash-o"></i></a></span>'
  						+"</strong></li>";
 //			replyStr += "<li> <span hidden>"+reply[i].rno+"</span>" +'<span class="replyModify">'+reply[i].reply+"</span>("+reply[i].replyer+") - " + replyService.time(reply[i].replyDate) +' [<span class="btnDel"><a href="#">X</a></span>] </li>';
