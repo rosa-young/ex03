@@ -32,18 +32,21 @@
 	
 	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
 		<![CDATA[ 
-		select bno,title,writer,regdate,updatedate,good
-		from (select /*+INDEX_DESC(tbl_board tbl_board_pk) */ 
-     		         rownum rn,bno,title,writer,regdate,updatedate,good
-     		  from tbl_board where 
+		select bno,title,replycount,writer,regdate,updatedate,good
+        from (
+			select bno,title,writer,regdate,updatedate,good
+			from (select /*+INDEX_DESC(tbl_board tbl_board_pk) */ 
+	     		         rownum rn,bno,title,writer,regdate,updatedate,good
+	     		  from tbl_board where 
      	]]>	 
-     	<include refid="criteria"></include>
+     	<include refid="criteria" ></include>
      	<![CDATA[  
      		  rownum <= #{pageNum} * #{amount})
-		where rn>(#{pageNum}-1) * #{amount} 
+		where rn>(#{pageNum}-1) * #{amount} )left join ( select bno,count(*) replycount from tbl_reply
+        group by bno) using(bno)
 		]]>
 	</select>
-	
+			
 	<select id="read" resultType="org.zerock.domain.BoardVO">
 		select * from tbl_board where bno=#{bno}
 	</select>

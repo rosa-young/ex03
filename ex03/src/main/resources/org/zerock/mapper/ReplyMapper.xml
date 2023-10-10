@@ -24,5 +24,17 @@
 	<select id="get" resultType="org.zerock.domain.ReplyVO">
 	select * from tbl_reply where rno=#{rno}
 	</select>
+	
+	<select id="bnoCount" resultType="long">
+		select count(DISTINCT bno) from tbl_reply
+	</select>
+	
+	<select id="rCount" resultType="long">
+	select bno
+	from(select bno, count(*) rcount from tbl_reply group by bno)
+	where rcount = (select max(count(*)) maxreply from tbl_reply group by bno)
+	</select>
+	
+	
  
 </mapper>

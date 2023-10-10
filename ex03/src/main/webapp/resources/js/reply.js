@@ -108,6 +108,25 @@ var replyService = (function(){
 		})
 	};
 	
+	//댓글갯수
+	function count(bno,callback,error){
+		console.log("댓글갯수");
+		$.ajax({
+			type:"get",
+			url:"/replies/"+bno+".json",
+			success:function(result,status,xhr){
+				console.log("댓글갯수 정상처리");
+				if(callback)
+					callback(result);
+			},
+			error:function(xhr,status,er){
+				if(error)
+					error(er);
+			}
+		
+		})
+	};
+	
 	//시간포맷 처리 함수
 	function displayTime(timeValue){
 		var dateObj = new Date(timeValue);

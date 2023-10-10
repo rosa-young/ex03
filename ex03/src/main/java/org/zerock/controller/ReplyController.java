@@ -76,8 +76,12 @@ public class ReplyController {
 	public ReplyVO get(@PathVariable("rno") Long rno) {
 		return service.get(rno);
 	}
-
 	
+	@GetMapping("/{bno}")
+	public ReplyVO count(@PathVariable("bno") Long bno) {
+		return service.get(bno);
+	}
+
 	
 
 }

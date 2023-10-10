@@ -18,8 +18,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           <i class="fa fa-th-list"></i>
-                                                   
+                           <i class="fa fa-th-list"> 글목록</i><p style="text-align:right"><i class="fa fa-comments-o"> 리플이 달려있는 글 : <span id="replybnocount"></span></i> / <i class="fa fa-thumbs-o-up"> 리플이 가장 많은 글번호: ${rCount} </i></p>  
                         </div>
                         
                         <!-- /.panel-heading -->
@@ -40,7 +39,8 @@
 								<c:forEach items="${list}" var="board">
 								              <tr>
 								                  <td>${board.bno}</td>
-								                  <td><a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}"><c:out value="${board.title}"/></a></td>
+								                  <td><a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}"><c:out value="${board.title}"/>
+								                  		(<c:if test="${board.replycount!=null}">${board.replycount}</c:if><c:if test="${board.replycount==null}">0</c:if>)</a></td>
 								                  <td><c:out value="${board.writer}"/></td>
 								                  <td class="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}"/></td>
 								                  <td class="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updatedate}"/></td>
@@ -158,6 +158,24 @@
    		var date = new Date();
    		date.toString();
    </script>
+   
+<script>
+//1. ajax 통해서 데이터 가져오기
+
+$.ajax({  
+	url:"/myapi/replybnocount",
+	type:"get",
+	success:function(data){
+		//2. 가져온 데이터 화면에 출력
+		$("#replybnocount").text(data);
+	}
+	
+});
+
+$("#replybnocount").text(replybnocount);
+</script>
+
+
 
 </body>
 </html>

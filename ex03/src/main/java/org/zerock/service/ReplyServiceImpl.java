@@ -41,4 +41,14 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.get(rno);
 	}
 
+	@Override
+	public Long bnoCount() {
+		return mapper.bnoCount();
+	}
+
+	@Override
+	public Long rCount() {
+		return mapper.rCount();
+	}
+
 }

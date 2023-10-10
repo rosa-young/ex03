@@ -17,5 +17,10 @@ public interface ReplyMapper {
 	
 	//댓글 한줄 보기
 	ReplyVO get(Long rno);
+	
+	//리플이 달린 글갯수
+	Long bnoCount();
+	//리플이 가장 많은 글번호
+	Long rCount();
 
 }
