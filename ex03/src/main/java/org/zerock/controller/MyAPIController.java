@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.zerock.domain.BestBoard;
 import org.zerock.domain.BnoVO;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
@@ -60,6 +61,23 @@ public class MyAPIController {
 		cri.setPageNum(page);
 		return boardService.getList(cri);
 	} //Post 테스트시 PayLoad:에 {"type":"T", "keyword":"테스트" } 넣어서 테스트.
+	
+	@GetMapping("/myapi/todayCount")
+	public String todayCount() {
+		return service.todayCount()+"";
+	}
+	
+	@GetMapping(value="/myapi/todayReply",produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<ReplyVO> todayReply() {
+		return service.todayReply();
+	}
+	
+	@GetMapping("/myapi/bestboard")
+	public List<BestBoard> bestboard(){
+		return boardService.bestBoard();
+				
+	}
+		
 	
 	
 

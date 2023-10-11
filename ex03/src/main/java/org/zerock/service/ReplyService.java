@@ -20,6 +20,12 @@ public interface ReplyService {
 	    Long bnoCount();
 	//리플이 가장 많은 글번호
 		Long rCount();
+	//오늘 리플 개수
+		Long todayCount();
+	//오늘 리플
+		List<ReplyVO> todayReply();
+
+		
 	
 	
 

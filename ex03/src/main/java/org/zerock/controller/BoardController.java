@@ -127,6 +127,24 @@ public class BoardController {
 		return service.getList(cri);
 	} 
 
+	@GetMapping("/newsearch")
+	public void newSearch() {
+		
+	}
 	
+	@GetMapping("/newReply")
+	public void newReply() {
+		
+	}
+	
+	@GetMapping("/bestboard")
+	public void bestboard() {
+		
+	}
+	
+	
+	
+	
+
 
 }

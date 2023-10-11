@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.zerock.domain.BestBoard;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.RankVO;
@@ -77,6 +78,11 @@ public class BoardServiceImpl implements BoardService {
 		Date date = new Date();
 		return date;
 		
+	}
+
+	@Override
+	public List<BestBoard> bestBoard() {
+		return mapper.bestBoard();
 	}
 	
 	

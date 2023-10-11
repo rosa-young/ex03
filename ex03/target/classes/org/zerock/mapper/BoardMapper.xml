@@ -114,6 +114,20 @@
 	<update id="good">
 		update tbl_board set good=good+1 where bno=#{bno}
 	</update>
+	
+	<select id="bestBoard" resultType="org.zerock.domain.BestBoard">
+	<![CDATA[ 
+	select title,cn rcount
+	from  tbl_board 
+     join
+     (select *
+      from(select bno,count(*) cn
+           from(select * from TBL_REPLY where updatedate > (select sysdate-(1/24) from dual ))
+           group by bno order by cn desc) 
+      where rownum<4 )
+      using(bno)
+      ]]>
+	</select>
 
 
 </mapper>

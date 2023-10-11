@@ -51,4 +51,15 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.rCount();
 	}
 
+	@Override
+	public Long todayCount() {
+		return mapper.todayCount();
+	}
+
+	@Override
+	public List<ReplyVO> todayReply() {
+		return mapper.todayReply();
+	}
+
+
 }
