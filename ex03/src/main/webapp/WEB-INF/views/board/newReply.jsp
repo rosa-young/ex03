@@ -19,15 +19,16 @@
 <script>
 $(document).ready(function() { 
 	console.log("오늘의 리플 5초마다 갱신");
-	//setInterval("todayCount()", 5000);  //5초마다 실행
 	
-	//serInterval(function(){	},5000);
+	//setInterval(todayCount, 5000);  //todayCount함수를 5초마다 실행
+	
+	
 	
 });
 </script>
 
 <script>
-$(function(){
+$(function (){
 	$("#todayBtn").on("click",function(e){
 		$.ajax({
 			url:"/myapi/todayCount",
@@ -40,6 +41,7 @@ $(function(){
 		});
 	});
 });
+	
 </script>
 
 

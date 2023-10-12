@@ -74,8 +74,7 @@ public class MyAPIController {
 	
 	@GetMapping("/myapi/bestboard")
 	public List<BestBoard> bestboard(){
-		return boardService.bestBoard();
-				
+		return boardService.bestBoard();				
 	}
 		
 	

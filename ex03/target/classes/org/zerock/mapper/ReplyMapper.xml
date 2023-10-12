@@ -30,9 +30,12 @@
 	</select>
 	
 	<select id="rCount" resultType="long">
-	select bno
-	from(select bno, count(*) rcount from tbl_reply group by bno)
-	where rcount = (select max(count(*)) maxreply from tbl_reply group by bno)
+	select bno   
+	from(select bno, count(*) rcount 
+    	from tbl_reply 
+    	group by bno 
+   		order by rcount desc)
+	where rownum=1
 	</select>
 	
 	
