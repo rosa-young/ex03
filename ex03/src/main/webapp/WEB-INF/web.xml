@@ -30,7 +30,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<!-- 한글설정필터 -->
+	<!-- 한글설정필터 (아래부분 추가로 한글깨짐현상 해결) -->
 	<filter> 
     	<filter-name>encodingFilter</filter-name> 
     	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> 
@@ -48,5 +48,7 @@
 	    <filter-name>encodingFilter</filter-name> 
 	    <servlet-name>appServlet</servlet-name> 
 	 </filter-mapping> 
+	
+
 
 </web-app>
