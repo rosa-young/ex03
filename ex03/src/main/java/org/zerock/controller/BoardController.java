@@ -44,7 +44,7 @@ public class BoardController {
 	//등록(작성글-BoardVO) board/reguster (post)  <-입력화면(get)
 	@PostMapping("/register")
 	public String register(BoardVO vo,RedirectAttributes rttr) {
-		log.info("register url post 요청");
+		log.info("===========register url post 요청"+vo);
 		service.register(vo);
 		rttr.addFlashAttribute("oper","create");
 		rttr.addFlashAttribute("result",vo.getBno()); //why? 데이터(작성글번호) 한번만 전송.(새로고침 도배방지)
@@ -53,6 +53,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/register")
+	
 		public void register() {
 		
 	}

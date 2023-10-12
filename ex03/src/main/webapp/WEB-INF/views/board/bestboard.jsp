@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>실시간 인기글</h3>
+<h3>1시간 이내 실시간 인기글</h3>
 <div id="rank">
 </div>
 
